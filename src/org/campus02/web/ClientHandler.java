@@ -21,6 +21,7 @@ public class ClientHandler implements Runnable {
 			while ((command = br.readLine()) != null) {
 				if (command.equals("bye")) {
 					client.close();
+					return;
 				} else if (command.startsWith("fetch ")) {
 					try {
 						bw.write(proxy.fetch(command.substring("fetch ".length())).getContent());
